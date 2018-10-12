@@ -27,21 +27,21 @@ extern int matchTerminal(rdp this, char c);
 
 extern int matchTerminals(rdp this, char* c);
 
-extern Node E (rdp this);
+extern Node E (rdp rdp_parser);
 
-extern Node T (rdp this);
+extern Node T (rdp rdp_parser);
 
-extern Node TT (rdp this);
+extern Node TT (rdp rdp_parser);
 
-extern Node D(rdp this);
+extern Node D(rdp rdp_parser);
 
-extern Node NT(rdp this);
+extern Node NT(rdp rdp_parser);
 
-extern Node N(rdp this);
+extern Node N(rdp rdp_parser);
 
-extern Node F(rdp this);
+extern Node F(rdp rdp_parser);
 
-extern Node FT(rdp this);
+extern Node FT(rdp rdp_parser);
 
 
 #endif /* rdp_h */

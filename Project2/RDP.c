@@ -33,62 +33,62 @@ int matchTerminal(rdp this, char c){
 
 
 
-Node D(rdp this){
-    if(matchTerminal(this, '0')){
+Node D(rdp rdp_parser){
+    if(matchTerminal(rdp_parser, '0')){
         Node x=newNode('D');
         Node y[]={newNode('0')};
         Node_addChildren(x, y);
         return x;
     }else{
-        if(matchTerminal(this, '1')){
+        if(matchTerminal(rdp_parser, '1')){
             Node x=newNode('D');
             Node y[]={newNode('1')};
             Node_addChildren(x, y);
             return x;
         }else{
-            if(matchTerminal(this, '2')){
+            if(matchTerminal(rdp_parser, '2')){
                 Node x=newNode('D');
                 Node y[]={newNode('2')};
                 Node_addChildren(x, y);
                 return x;
             }else{
-                if(matchTerminal(this, '3')){
+                if(matchTerminal(rdp_parser, '3')){
                     Node x=newNode('D');
                     Node y[]={newNode('3')};
                     Node_addChildren(x, y);
                     return x;
                 }else{
-                    if(matchTerminal(this, '4')){
+                    if(matchTerminal(rdp_parser, '4')){
                         Node x=newNode('D');
                         Node y[]={newNode('4')};
                         Node_addChildren(x, y);
                         return x;
                     }else{
-                        if(matchTerminal(this, '5')){
+                        if(matchTerminal(rdp_parser, '5')){
                             Node x=newNode('D');
                             Node y[]={newNode('5')};
                             Node_addChildren(x, y);
                             return x;
                         }else{
-                            if(matchTerminal(this, '6')){
+                            if(matchTerminal(rdp_parser, '6')){
                                 Node x=newNode('D');
                                 Node y[]={newNode('6')};
                                 Node_addChildren(x, y);
                                 return x;
                             }else{
-                                if(matchTerminal(this, '7')){
+                                if(matchTerminal(rdp_parser, '7')){
                                     Node x=newNode('D');
                                     Node y[]={newNode('7')};
                                     Node_addChildren(x, y);
                                     return x;
                                 }else{
-                                    if(matchTerminal(this, '8')){
+                                    if(matchTerminal(rdp_parser, '8')){
                                         Node x=newNode('D');
                                         Node y[]={newNode('8')};
                                         Node_addChildren(x, y);
                                         return x;
                                     }else{
-                                        if(matchTerminal(this, '9')){
+                                        if(matchTerminal(rdp_parser, '9')){
                                             Node x=newNode('D');
                                             Node y[]={newNode('9')};
                                             Node_addChildren(x, y);
@@ -105,14 +105,14 @@ Node D(rdp this){
     }
 }
 
-Node NT(rdp this){
-    if(!N(this)){
+Node NT(rdp rdp_parser){
+    if(!N(rdp_parser)){
         Node x=newNode('n');
         Node y[]={newNode('e')};
         Node_addChildren(x, y);
         return x;
     }else{
-        Node yy=N(this);
+        Node yy=N(rdp_parser);
         if(yy==NULL)return NULL;
         Node x=newNode('n');
         Node y[]={yy};
@@ -121,10 +121,10 @@ Node NT(rdp this){
     }
 }
 
-Node N(rdp this){
-    Node yy=D(this);
+Node N(rdp rdp_parser){
+    Node yy=D(rdp_parser);
     if(yy==NULL)return NULL;
-    Node yyy=NT(this);
+    Node yyy=NT(rdp_parser);
     if(yyy==NULL)return NULL;
     Node x=newNode('N');
     Node y[]={yy,yyy};
@@ -132,11 +132,11 @@ Node N(rdp this){
     return x;
 }
 
-Node F(rdp this){
-    if(matchTerminal(this, '(')){
-        Node yy =E(this);
+Node F(rdp rdp_parser){
+    if(matchTerminal(rdp_parser, '(')){
+        Node yy =E(rdp_parser);
         if(yy==NULL)return NULL;
-        if(!matchTerminal(this, ')'))return NULL;
+        if(!matchTerminal(rdp_parser, ')'))return NULL;
         Node x=newNode('F');
         Node xx=newNode('(');
         Node xxx=newNode(')');
@@ -144,7 +144,7 @@ Node F(rdp this){
         Node_addChildren(x, y);
         return x;
     }else{
-        Node yy=N(this);
+        Node yy=N(rdp_parser);
         if(yy==NULL)return NULL;
         Node x=newNode('E');
         Node y[]={yy};
@@ -154,11 +154,11 @@ Node F(rdp this){
 }
 
 
-Node E(rdp this){
+Node E(rdp rdp_parser){
     
-    Node yy = T(this);
+    Node yy = T(rdp_parser);
     if(yy==NULL)return NULL;
-    Node yyy = TT(this);
+    Node yyy = TT(rdp_parser);
     if(yyy==NULL)return NULL;
     Node x=newNode('N');
     Node y[]={yy,yyy};
@@ -166,11 +166,11 @@ Node E(rdp this){
     return x;
 }
 
-Node T(rdp this){
+Node T(rdp rdp_parser){
     
-    Node yy=F(this);
+    Node yy=F(rdp_parser);
     if(yy==NULL)return NULL;
-    Node yyy = FT(this);
+    Node yyy = FT(rdp_parser);
     if(yyy==NULL)return NULL;
     Node x=newNode('N');
     Node y[]={yy,yyy};
@@ -179,12 +179,12 @@ Node T(rdp this){
     
 }
 
-Node TT(rdp this){
+Node TT(rdp rdp_parser){
     
-    if (matchTerminal(this, '+')){
-        Node yy = T(this);
+    if (matchTerminal(rdp_parser, '+')){
+        Node yy = T(rdp_parser);
         if(yy==NULL)return NULL;
-        Node yyy=TT(this);
+        Node yyy=TT(rdp_parser);
         if(yyy==NULL)return NULL;
         Node x=newNode('N');
         Node y[]={yy,yyy};
@@ -192,11 +192,11 @@ Node TT(rdp this){
         return x;
         
         
-    }else if (matchTerminal(this, '-')){
+    }else if (matchTerminal(rdp_parser, '-')){
         
-        Node yy = T(this);
+        Node yy = T(rdp_parser);
         if(yy==NULL)return NULL;
-        Node yyy=TT(this);
+        Node yyy=TT(rdp_parser);
         if(yyy==NULL)return NULL;
         Node x=newNode('N');
         Node y[]={yy,yyy};
@@ -211,12 +211,12 @@ Node TT(rdp this){
 }
 
 
-Node FT(rdp parser){
+Node FT(rdp rdp_parser){
     
-    if (matchTerminal(this, '*')){
-        Node yy = F(this);
+    if (matchTerminal(rdp_parser, '*')){
+        Node yy = F(rdp_parser);
         if(yy==NULL)return NULL;
-        Node yyy=FT(this);
+        Node yyy=FT(rdp_parser);
         if(yyy==NULL)return NULL;
         Node x=newNode('N');
         Node y[]={yy,yyy};
@@ -224,11 +224,11 @@ Node FT(rdp parser){
         return x;
         
         
-    }else if (matchTerminal(this, '/')){
+    }else if (matchTerminal(rdp_parser, '/')){
         
-        Node yy = F(this);
+        Node yy = F(rdp_parser);
         if(yy==NULL)return NULL;
-        Node yyy=FT(this);
+        Node yyy=FT(rdp_parser);
         if(yyy==NULL)return NULL;
         Node x=newNode('N');
         Node y[]={yy,yyy};
