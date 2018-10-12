@@ -28,7 +28,6 @@ int main(int argc, const char * argv[]) {
         //input:str
         
         rdp RDP1 = new_rdp("2");
-        RDP1= NULL;
-        
+        printTree(RDP1->root);
     }
 }

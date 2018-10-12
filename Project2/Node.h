@@ -17,10 +17,13 @@ typedef struct Node *Node;
 struct Node{
     char element;
     Node* children;
+    int childNum;
     Node parent;
     int depth;
 };
 
 extern Node newNode(char c);
 
-extern void Node_addChildren(Node this, Node* children);
+extern void Node_addChildren(Node node, Node* children);
+
+extern void printTree(Node node);
