@@ -146,7 +146,7 @@ Node F(rdp rdp_parser){
     }else{
         Node yy=N(rdp_parser);
         if(yy==NULL)return NULL;
-        Node x=newNode('E');
+        Node x=newNode('F');
         Node y[]={yy};
         Node_addChildren(x, y);
         return x;
@@ -160,7 +160,7 @@ Node E(rdp rdp_parser){
     if(yy==NULL)return NULL;
     Node yyy = TT(rdp_parser);
     if(yyy==NULL)return NULL;
-    Node x=newNode('N');
+    Node x=newNode('E');
     Node y[]={yy,yyy};
     Node_addChildren(x, y);
     return x;
@@ -172,7 +172,7 @@ Node T(rdp rdp_parser){
     if(yy==NULL)return NULL;
     Node yyy = FT(rdp_parser);
     if(yyy==NULL)return NULL;
-    Node x=newNode('N');
+    Node x=newNode('T');
     Node y[]={yy,yyy};
     Node_addChildren(x, y);
     return x;
@@ -186,7 +186,7 @@ Node TT(rdp rdp_parser){
         if(yy==NULL)return NULL;
         Node yyy=TT(rdp_parser);
         if(yyy==NULL)return NULL;
-        Node x=newNode('N');
+        Node x=newNode('t');
         Node y[]={yy,yyy};
         Node_addChildren(x, y);
         return x;
@@ -198,7 +198,7 @@ Node TT(rdp rdp_parser){
         if(yy==NULL)return NULL;
         Node yyy=TT(rdp_parser);
         if(yyy==NULL)return NULL;
-        Node x=newNode('N');
+        Node x=newNode('t');
         Node y[]={yy,yyy};
         Node_addChildren(x, y);
         return x;
@@ -221,7 +221,7 @@ Node FT(rdp rdp_parser){
         if(yy==NULL)return NULL;
         Node yyy=FT(rdp_parser);
         if(yyy==NULL)return NULL;
-        Node x=newNode('N');
+        Node x=newNode('f');
         Node y[]={yy,yyy};
         Node_addChildren(x, y);
         return x;
@@ -233,7 +233,7 @@ Node FT(rdp rdp_parser){
         if(yy==NULL)return NULL;
         Node yyy=FT(rdp_parser);
         if(yyy==NULL)return NULL;
-        Node x=newNode('N');
+        Node x=newNode('f');
         Node y[]={yy,yyy};
         Node_addChildren(x, y);
         return x;
