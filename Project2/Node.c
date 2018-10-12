@@ -19,7 +19,7 @@ Node newNode(char c){
     this->depth=0;
     return this;
 }
-
+///////
 void Node_addChildren(Node this, Node* children){
     Node *i;
     int k=0;
