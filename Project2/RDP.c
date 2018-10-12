@@ -6,7 +6,7 @@
 //  Copyright © 2018 Junkang Gu. All rights reserved.
 //
 
-#include "rdp.h"
+#include "RDP.h"
 #include <stdlib.h>
 
 
@@ -204,8 +204,11 @@ Node TT(rdp rdp_parser){
         return x;
         
     } else {
+     
+        Node e = newNode('e');
         
         
+        return e;
     }
     
 }
@@ -234,6 +237,11 @@ Node FT(rdp rdp_parser){
         Node y[]={yy,yyy};
         Node_addChildren(x, y);
         return x;
+        
+    }else {
+        
+        Node e = newNode('e');
+        return e;
         
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2018 Junkang Gu. All rights reserved.
 //
 
-#ifndef rdp_h
-#define rdp_h
+#ifndef RDH_h
+#define RDH_h
 
 #include <stdio.h>
 #include "Node.h"

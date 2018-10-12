@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "rdp.h"
+#include "RDP.h"
 void removeNewLine(char* i);
 void removeNewLine(char* i){
     long length=strlen(i);
@@ -26,11 +26,6 @@ int main(int argc, const char * argv[]) {
             return 0;
         }
         //input:str
-        
-        
-        
-        
-        
         
     }
 }

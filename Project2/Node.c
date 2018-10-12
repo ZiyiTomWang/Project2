@@ -9,8 +9,7 @@
 #include "Node.h"
 #include <stdlib.h>
 
-Node new_Node(char c);
-Node new_Node(char c){
+Node newNode(char c){
     Node this=(Node) malloc(sizeof(struct Node));
     this->element=c;
     this->children=(Node*)malloc(sizeof(Node));
