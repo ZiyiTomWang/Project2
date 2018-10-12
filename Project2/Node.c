@@ -35,12 +35,16 @@ void Node_addChildren(Node this, Node* children){
 // 
 void printTree(Node node){
     
-    printf(" %c", node -> element);
+    for(int i=0; i<node->depth;i++){
+        printf(" ");
+    }
+    printf("%c\n", node -> element);
     
     if ( node -> childNum == 0){
         //
     }else {
         for (int i = 0; i < node -> childNum; i++){
+            node->children[i]->depth++;
             printTree(node -> children[i]);
         }
     }
