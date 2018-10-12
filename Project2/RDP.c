@@ -13,7 +13,7 @@
 rdp new_rdp(char * input){
     rdp this=(rdp)malloc(sizeof(struct rdp));
     this->input=input;
-    
+    this->root=E(this);
     return this;
 }
 
