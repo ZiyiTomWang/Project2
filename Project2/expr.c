@@ -27,5 +27,8 @@ int main(int argc, const char * argv[]) {
         }
         //input:str
         
+        rdp new_rdp("2");
+        
+        
     }
 }
