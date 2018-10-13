@@ -17,8 +17,12 @@ rdp new_rdp(char * input){
     return this;
 }
 
-int lookahead(rdp this,char c){
-    return *this->input==c;
+int lookahead(rdp rdp_parser,char c){
+    return *rdp_parser->input==c;
+}
+
+int lookahead2(rdp rdp_parser){
+    return *rdp_parser -> input;
 }
 
 
@@ -34,75 +38,157 @@ int matchTerminal(rdp this, char c){
 
 
 Node D(rdp rdp_parser){
-    if(matchTerminal(rdp_parser, '0')){
-        Node x=newNode('D');
-        Node y[]={newNode('0')};
-        Node_addChildren(x, y);
-        return x;
-    }else{
-        if(matchTerminal(rdp_parser, '1')){
+    
+    
+
+    switch (lookahead2(rdp_parser)) {
+        case '0':
+            matchTerminal(rdp_parser, '0');
             Node x=newNode('D');
-            Node y[]={newNode('1')};
+            Node y[]={newNode('0')};
             Node_addChildren(x, y);
             return x;
-        }else{
-            if(matchTerminal(rdp_parser, '2')){
-                Node x=newNode('D');
-                Node y[]={newNode('2')};
-                Node_addChildren(x, y);
-                return x;
-            }else{
-                if(matchTerminal(rdp_parser, '3')){
-                    Node x=newNode('D');
-                    Node y[]={newNode('3')};
-                    Node_addChildren(x, y);
-                    return x;
-                }else{
-                    if(matchTerminal(rdp_parser, '4')){
-                        Node x=newNode('D');
-                        Node y[]={newNode('4')};
-                        Node_addChildren(x, y);
-                        return x;
-                    }else{
-                        if(matchTerminal(rdp_parser, '5')){
-                            Node x=newNode('D');
-                            Node y[]={newNode('5')};
-                            Node_addChildren(x, y);
-                            return x;
-                        }else{
-                            if(matchTerminal(rdp_parser, '6')){
-                                Node x=newNode('D');
-                                Node y[]={newNode('6')};
-                                Node_addChildren(x, y);
-                                return x;
-                            }else{
-                                if(matchTerminal(rdp_parser, '7')){
-                                    Node x=newNode('D');
-                                    Node y[]={newNode('7')};
-                                    Node_addChildren(x, y);
-                                    return x;
-                                }else{
-                                    if(matchTerminal(rdp_parser, '8')){
-                                        Node x=newNode('D');
-                                        Node y[]={newNode('8')};
-                                        Node_addChildren(x, y);
-                                        return x;
-                                    }else{
-                                        if(matchTerminal(rdp_parser, '9')){
-                                            Node x=newNode('D');
-                                            Node y[]={newNode('9')};
-                                            Node_addChildren(x, y);
-                                            return x;
-                                        }else return NULL;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+            
+        case '1':
+            matchTerminal(rdp_parser, '1');
+            Node x1=newNode('D');
+            Node y1[]={newNode('1')};
+            Node_addChildren(x1, y1);
+            return x1;
+        case '2':
+            matchTerminal(rdp_parser, '2');
+            Node x2=newNode('D');
+            Node y2[]={newNode('2')};
+            Node_addChildren(x2, y2);
+            return x2;
+            
+        case '3':
+            matchTerminal(rdp_parser, '3');
+            Node x3=newNode('D');
+            Node y3[]={newNode('3')};
+            Node_addChildren(x3, y3);
+            return x3;
+            
+        case '4':
+            matchTerminal(rdp_parser, '4');
+            Node x4=newNode('D');
+            Node y4[]={newNode('4')};
+            Node_addChildren(x4, y4);
+            return x4;
+            
+            
+        case '5':
+            matchTerminal(rdp_parser, '5');
+            Node x5=newNode('D');
+            Node y5[]={newNode('5')};
+            Node_addChildren(x5, y5);
+            return x5;
+            
+            
+        case '6':
+            matchTerminal(rdp_parser, '6');
+            Node x6=newNode('D');
+            Node y6[]={newNode('6')};
+            Node_addChildren(x6, y6);
+            return x6;
+            
+        case '7':
+            matchTerminal(rdp_parser, '7');
+            Node x7=newNode('D');
+            Node y7[]={newNode('7')};
+            Node_addChildren(x7, y7);
+            return x7;
+            
+        case '8':
+            matchTerminal(rdp_parser, '8');
+            Node x8=newNode('D');
+            Node y8[]={newNode('8')};
+            Node_addChildren(x8, y8);
+            return x8;
+            
+        case '9':
+            matchTerminal(rdp_parser, '9');
+            Node x9=newNode('D');
+            Node y9[]={newNode('9')};
+            Node_addChildren(x9, y9);
+            return x9;
+            
+            break;
+            
+        default:
+            return NULL;
+            break;
     }
+    
+//    if(matchTerminal(rdp_parser, '0')){
+//        Node x=newNode('D');
+//        Node y[]={newNode('0')};
+//        Node_addChildren(x, y);
+//        return x;
+//    }else{
+//        if(matchTerminal(rdp_parser, '1')){
+//            Node x=newNode('D');
+//            Node y[]={newNode('1')};
+//            Node_addChildren(x, y);
+//            return x;
+//        }else{
+//            if(matchTerminal(rdp_parser, '2')){
+//                Node x=newNode('D');
+//                Node y[]={newNode('2')};
+//                Node_addChildren(x, y);
+//                return x;
+//            }else{
+//                if(matchTerminal(rdp_parser, '3')){
+//                    Node x=newNode('D');
+//                    Node y[]={newNode('3')};
+//                    Node_addChildren(x, y);
+//                    return x;
+//                }else{
+//                    if(matchTerminal(rdp_parser, '4')){
+//                        Node x=newNode('D');
+//                        Node y[]={newNode('4')};
+//                        Node_addChildren(x, y);
+//                        return x;
+//                    }else{
+//                        if(matchTerminal(rdp_parser, '5')){
+//                            Node x=newNode('D');
+//                            Node y[]={newNode('5')};
+//                            Node_addChildren(x, y);
+//                            return x;
+//                        }else{
+//                            if(matchTerminal(rdp_parser, '6')){
+//                                Node x=newNode('D');
+//                                Node y[]={newNode('6')};
+//                                Node_addChildren(x, y);
+//                                return x;
+//                            }else{
+//                                if(matchTerminal(rdp_parser, '7')){
+//                                    Node x=newNode('D');
+//                                    Node y[]={newNode('7')};
+//                                    Node_addChildren(x, y);
+//                                    return x;
+//                                }else{
+//                                    if(matchTerminal(rdp_parser, '8')){
+//                                        Node x=newNode('D');
+//                                        Node y[]={newNode('8')};
+//                                        Node_addChildren(x, y);
+//                                        return x;
+//                                    }else{
+//                                        if(matchTerminal(rdp_parser, '9')){
+//                                            Node x=newNode('D');
+//                                            Node y[]={newNode('9')};
+//                                            Node_addChildren(x, y);
+//                                            return x;
+//                                        }else return NULL;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 Node NT(rdp rdp_parser){
