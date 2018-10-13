@@ -22,13 +22,11 @@ Node newNode(char c){
     return this;
 }
 
-void Node_addChildren(Node this, Node* children){
-    Node *i;
-    int k=0;
-    for(i=children;*i;i++){
-        this->children[k]=*i;
+void Node_addChildren(Node this, Node* children, int numOfChildren){
+    int start=this->childNum;
+    for(int i=start;i<start+numOfChildren;i++){
+        this->children[i]=children[i-start];
         this -> childNum ++;
-        k++;
     }
 }
 
@@ -44,6 +42,7 @@ void printTree(Node node){
         //
     }else {
         for (int i = 0; i < node -> childNum; i++){
+
             node->children[i]->depth=node->depth+1;
             printTree(node -> children[i]);
         }

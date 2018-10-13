@@ -24,6 +24,6 @@ struct Node{
 
 extern Node newNode(char c);
 
-extern void Node_addChildren(Node node, Node* children);
+extern void Node_addChildren(Node node, Node* children, int numOfChildren);
 
 extern void printTree(Node node);
