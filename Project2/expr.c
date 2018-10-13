@@ -28,6 +28,11 @@ int main(int argc, const char * argv[]) {
         //input:str
         
         rdp RDP1 = new_rdp(str);
+        if(RDP1->root==NULL){
+            printf("Not a well-formed input\n");
+        }
+        else{
         printTree(RDP1->root);
+        }
     }
 }

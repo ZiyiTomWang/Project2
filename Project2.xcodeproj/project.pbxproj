@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		055E206B216DA6AD00FDFBE1 /* expr.c in Sources */ = {isa = PBXBuildFile; fileRef = 055E206A216DA6AD00FDFBE1 /* expr.c */; };
 		055E2071216ECA2900FDFBE1 /* Node.c in Sources */ = {isa = PBXBuildFile; fileRef = 055E2070216ECA2900FDFBE1 /* Node.c */; };
+		055E2087217289A800FDFBE1 /* TDP.c in Sources */ = {isa = PBXBuildFile; fileRef = 055E2086217289A800FDFBE1 /* TDP.c */; };
+		055E208A2172910500FDFBE1 /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 055E20892172910500FDFBE1 /* Stack.c */; };
 		6E2546D021712ED800453B7A /* RDP.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E2546CF21712ED800453B7A /* RDP.c */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,10 @@
 		055E206A216DA6AD00FDFBE1 /* expr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = expr.c; sourceTree = "<group>"; };
 		055E206F216ECA2900FDFBE1 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		055E2070216ECA2900FDFBE1 /* Node.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Node.c; sourceTree = "<group>"; };
+		055E2085217289A800FDFBE1 /* TDP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDP.h; sourceTree = "<group>"; };
+		055E2086217289A800FDFBE1 /* TDP.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TDP.c; sourceTree = "<group>"; };
+		055E20882172910500FDFBE1 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		055E20892172910500FDFBE1 /* Stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Stack.c; sourceTree = "<group>"; };
 		6E2546CE21712ED800453B7A /* RDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDP.h; sourceTree = "<group>"; };
 		6E2546CF21712ED800453B7A /* RDP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RDP.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +74,10 @@
 				055E206A216DA6AD00FDFBE1 /* expr.c */,
 				055E206F216ECA2900FDFBE1 /* Node.h */,
 				055E2070216ECA2900FDFBE1 /* Node.c */,
+				055E2085217289A800FDFBE1 /* TDP.h */,
+				055E2086217289A800FDFBE1 /* TDP.c */,
+				055E20882172910500FDFBE1 /* Stack.h */,
+				055E20892172910500FDFBE1 /* Stack.c */,
 			);
 			path = Project2;
 			sourceTree = "<group>";
@@ -130,6 +140,8 @@
 			files = (
 				6E2546D021712ED800453B7A /* RDP.c in Sources */,
 				055E2071216ECA2900FDFBE1 /* Node.c in Sources */,
+				055E2087217289A800FDFBE1 /* TDP.c in Sources */,
+				055E208A2172910500FDFBE1 /* Stack.c in Sources */,
 				055E206B216DA6AD00FDFBE1 /* expr.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,7 +32,9 @@ void Node_addChildren(Node this, Node* children, int numOfChildren){
 
 // 
 void printTree(Node node){
-    
+    int name=(int)node->element;
+    if(name>=0||name<=256){
+        
     for(int i=0; i<node->depth;i++){
         printf("  ");
     }
@@ -42,10 +44,10 @@ void printTree(Node node){
         //
     }else {
         for (int i = 0; i < node -> childNum; i++){
-
             node->children[i]->depth=node->depth+1;
             printTree(node -> children[i]);
         }
     }
-    
+        
+    }
 }
