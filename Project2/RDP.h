@@ -23,7 +23,7 @@ extern int lookahead(rdp this, char c);
 
 extern int lookaheads(rdp this, char* c);
 
-int lookahead2(rdp rdp_parser);
+char lookahead2(rdp rdp_parser);
 
 extern int matchTerminal(rdp this, char c);
 

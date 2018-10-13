@@ -12,3 +12,17 @@
 #include <stdio.h>
 
 #endif /* Stack_h */
+
+typedef struct Stack *Stack;
+struct Stack{
+    char* arr;
+    int size;
+};
+
+extern Stack newStack(void);
+
+extern void pushChar(Stack stack,char c);
+
+extern void pushString(Stack stack, char* s);
+
+extern char pop(Stack stack);

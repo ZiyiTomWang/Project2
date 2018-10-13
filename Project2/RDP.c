@@ -21,7 +21,7 @@ int lookahead(rdp rdp_parser,char c){
     return *rdp_parser->input==c;
 }
 
-int lookahead2(rdp rdp_parser){
+char lookahead2(rdp rdp_parser){
     return *rdp_parser -> input;
 }
 
