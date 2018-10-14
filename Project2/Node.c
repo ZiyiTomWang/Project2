@@ -19,7 +19,7 @@ Node newNode(char c){
     }
     this->depth=0;
     this->parent=NULL;
-    this->nthChild=-1;
+    this->nthChild=0;
     return this;
 }
 
@@ -63,8 +63,9 @@ void printTree(Node node){
 }
 
 Node findNextSibling(Node node){
+
     int nthChild=node->nthChild;
-    if(nthChild>=node->parent->childNum){//no more siblings
+    if(nthChild>=node->parent->childNum-1){//no more siblings
         return NULL;
     }else{
         return node->parent->children[nthChild+1];
@@ -83,14 +84,15 @@ Node findLeftMostNonterminalLeaf(Node node){
             return node;
         }else{//is terminal
             Node sibling=findNextSibling(node);
+            
             if(sibling!=NULL){//found a sibling
                 return findLeftMostNonterminalLeaf(sibling);
             }else{//no more siblings
-                Node parentSibling=findNextSibling(node->parent);
-                if(parentSibling==NULL)return NULL;
-                else{
-                    return findLeftMostNonterminalLeaf(parentSibling);
-                }
+                Node pointer=node->parent;
+                    while(findNextSibling(pointer)==NULL){
+                        pointer=pointer->parent;
+                    }
+                    return findLeftMostNonterminalLeaf(findNextSibling(pointer));
             }
         }
         

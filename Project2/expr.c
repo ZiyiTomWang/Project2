@@ -27,15 +27,16 @@ int main(int argc, const char * argv[]) {
             return 0;
         }
         //input:str
-        
+        printf("\n    RDP...\n");
         rdp RDP1 = new_rdp(str);
         if(RDP1->root==NULL){
             printf("Not a well-formed input\n");
         }
         else{
+
         printTree(RDP1->root);
         }
-        
+        printf("\n    TDP...\n");
         TDP TDP1=new_TDP(str);
         if(TDP1->root==NULL){
             printf("Not a well-formed input\n");
