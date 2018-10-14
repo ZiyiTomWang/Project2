@@ -218,7 +218,7 @@ Node TT(rdp rdp_parser){
         
     } else {
         Node x=newNode('t');
-        Node y[]={newNode('e')};
+        Node y[]={newNode( 'e')};
         Node_addChildren(x, y,1);
         return x;
     }

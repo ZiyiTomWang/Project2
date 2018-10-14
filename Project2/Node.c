@@ -87,6 +87,7 @@ Node findLeftMostNonterminalLeaf(Node node){
             
             if(sibling!=NULL){//found a sibling
                 return findLeftMostNonterminalLeaf(sibling);
+                
             }else{//no more siblings
                 Node pointer=node->parent;
                     while(findNextSibling(pointer)==NULL){

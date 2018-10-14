@@ -73,6 +73,7 @@ char* production(int r, int c){
     }
     return productionRight[id];
 }
+
 Node execute(TDP tdp){
     Stack stack=newStack();
     pushChar(stack, 'E');
@@ -80,17 +81,24 @@ Node execute(TDP tdp){
     
     while(stack->size!=0){
         char goal=pop(stack);
+        printf("%s%d%s","goal: ", goal, "  " );
         if(tdp_findTerminal(goal)!=-1){//is terminal, match and consume
             tdp_matchTerminal(tdp, goal);
         }else if(tdp_findNonTerminal(goal)!=-1){//is not a terminal
             char input=tdp_lookahead2(tdp);
+            // printf("%s%d%s","input: ", input, "  " );
             int r=tdp_findNonTerminal(goal);
+            
+            printf("%s%d%s","r: ", r, " ");
             int c=tdp_findTerminal(input);
+            printf("%s%d%s","c:" , c, " ");
+            
             if(c==-1) c=16;//e
             char* produc=production(r, c);
             if(produc==NULL)return NULL;
             pushString(stack, produc);
             Node leaf=findLeftMostNonterminalLeaf(tdp->root);
+            
             Node_addChildrenByString(leaf, produc);
         }else{
             return NULL;
