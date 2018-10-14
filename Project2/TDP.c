@@ -18,15 +18,15 @@ TDP new_TDP(char * input){
     return this;
 }
 
-int lookahead(TDP tdp_parser,char c){
+int tdp_lookahead(TDP tdp_parser,char c){
     return *tdp_parser->input==c;
 }
 
-int lookahead2(TDP tdp){
+int tdp_lookahead2(TDP tdp){
     return *tdp->input;
 }
 
-int matchTerminal(TDP this, char c){
+int tdp_matchTerminal(TDP this, char c){
     if( *this->input==c){
         this->input++;
         return 1;
@@ -52,14 +52,14 @@ int table[8][17] = {
         
     };
 
-int findNonTerminal(char c){
+int tdp_findNonTerminal(char c){
     for(int i=0;i<8;i++){
         if(nonTerminal[i]==c)return i;
     }
     return -1;
 }
 
-int findTerminal(char c){
+int tdp_findTerminal(char c){
     for(int i=0;i<17;i++){
         if(terminal[i]==c)return i;
     }
@@ -80,12 +80,12 @@ Node execute(TDP tdp){
     
     while(stack->size!=0){
         char goal=pop(stack);
-        if(findTerminal(goal)!=-1){//is terminal, match and consume
-            matchTerminal(tdp, goal);
-        }else if(findNonTerminal(goal)!=-1){//is not a terminal
-            char input=lookahead2(tdp);
-            int r=findNonTerminal(goal);
-            int c=findTerminal(input);
+        if(tdp_findTerminal(goal)!=-1){//is terminal, match and consume
+            tdp_matchTerminal(tdp, goal);
+        }else if(tdp_findNonTerminal(goal)!=-1){//is not a terminal
+            char input=tdp_lookahead2(tdp);
+            int r=tdp_findNonTerminal(goal);
+            int c=tdp_findTerminal(input);
             if(c==-1) c=16;//e
             char* produc=production(r, c);
             if(produc==NULL)return NULL;

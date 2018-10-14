@@ -19,19 +19,19 @@ struct TDP{
     Node root;
 };
 
-extern int lookahead(TDP tdp_parser,char c);
+extern int tdp_lookahead(TDP tdp_parser,char c);
 
-extern int matchTerminal(TDP this, char c);
+extern int tdp_matchTerminal(TDP this, char c);
 
 extern TDP new_TDP(char * input);
 
 extern Node execute(TDP tdp);
 
-extern int findTerminal(char c);
+extern int tdp_findTerminal(char c);
 
-extern int findNonTerminal(char c);
+extern int tdp_findNonTerminal(char c);
 
-extern int lookahead2(TDP tdp);
+extern int tdp_lookahead2(TDP tdp);
 
 extern char* production(int r, int c);
 

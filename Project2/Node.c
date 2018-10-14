@@ -79,7 +79,7 @@ Node findLeftMostNonterminalLeaf(Node node){
     
     if(node->childNum==0){//is leaf
         
-        if(findNonTerminal(node->element)!=-1){//is nonterminal
+        if(tdp_findNonTerminal(node->element)!=-1){//is nonterminal
             return node;
         }else{//is terminal
             Node sibling=findNextSibling(node);

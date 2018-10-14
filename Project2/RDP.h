@@ -19,11 +19,11 @@ struct rdp{
 
 extern rdp new_rdp(char * input);
 
-extern int lookahead(rdp this, char c);
+extern int rdp_lookahead(rdp this, char c);
 
-extern char lookahead2(rdp rdp_parser);
+extern char rdp_lookahead2(rdp rdp_parser);
 
-extern int matchTerminal(rdp this, char c);
+extern int rdp_matchTerminal(rdp this, char c);
 
 extern int matchTerminals(rdp this, char* c);
 

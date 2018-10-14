@@ -17,16 +17,16 @@ rdp new_rdp(char * input){
     return this;
 }
 
-int lookahead(rdp rdp_parser,char c){
+int rdp_lookahead(rdp rdp_parser,char c){
     return *rdp_parser->input==c;
 }
 
-char lookahead2(rdp rdp_parser){
+char rdp_lookahead2(rdp rdp_parser){
     return *rdp_parser -> input;
 }
 
 
-int matchTerminal(rdp this, char c){
+int rdp_matchTerminal(rdp this, char c){
     if( *this->input==c){
         this->input++;
         return 1;
@@ -41,36 +41,36 @@ Node D(rdp rdp_parser){
     
     
 
-    switch (lookahead2(rdp_parser)) {
+    switch (rdp_lookahead2(rdp_parser)) {
         case '0':
-            matchTerminal(rdp_parser, '0');
+            rdp_matchTerminal(rdp_parser, '0');
             Node x=newNode('D');
             Node y[]={newNode('0')};
             Node_addChildren(x, y,1);
             return x;
             
         case '1':
-            matchTerminal(rdp_parser, '1');
+            rdp_matchTerminal(rdp_parser, '1');
             Node x1=newNode('D');
             Node y1[]={newNode('1')};
             Node_addChildren(x1, y1,1);
             return x1;
         case '2':
-            matchTerminal(rdp_parser, '2');
+            rdp_matchTerminal(rdp_parser, '2');
             Node x2=newNode('D');
             Node y2[]={newNode('2')};
             Node_addChildren(x2, y2,1);
             return x2;
             
         case '3':
-            matchTerminal(rdp_parser, '3');
+            rdp_matchTerminal(rdp_parser, '3');
             Node x3=newNode('D');
             Node y3[]={newNode('3')};
             Node_addChildren(x3, y3,1);
             return x3;
             
         case '4':
-            matchTerminal(rdp_parser, '4');
+            rdp_matchTerminal(rdp_parser, '4');
             Node x4=newNode('D');
             Node y4[]={newNode('4')};
             Node_addChildren(x4, y4,1);
@@ -78,7 +78,7 @@ Node D(rdp rdp_parser){
             
             
         case '5':
-            matchTerminal(rdp_parser, '5');
+            rdp_matchTerminal(rdp_parser, '5');
             Node x5=newNode('D');
             Node y5[]={newNode('5')};
             Node_addChildren(x5, y5,1);
@@ -86,28 +86,28 @@ Node D(rdp rdp_parser){
             
             
         case '6':
-            matchTerminal(rdp_parser, '6');
+            rdp_matchTerminal(rdp_parser, '6');
             Node x6=newNode('D');
             Node y6[]={newNode('6')};
             Node_addChildren(x6, y6,1);
             return x6;
             
         case '7':
-            matchTerminal(rdp_parser, '7');
+            rdp_matchTerminal(rdp_parser, '7');
             Node x7=newNode('D');
             Node y7[]={newNode('7')};
             Node_addChildren(x7, y7,1);
             return x7;
             
         case '8':
-            matchTerminal(rdp_parser, '8');
+            rdp_matchTerminal(rdp_parser, '8');
             Node x8=newNode('D');
             Node y8[]={newNode('8')};
             Node_addChildren(x8, y8,1);
             return x8;
             
         case '9':
-            matchTerminal(rdp_parser, '9');
+            rdp_matchTerminal(rdp_parser, '9');
             Node x9=newNode('D');
             Node y9[]={newNode('9')};
             Node_addChildren(x9, y9,1);
@@ -145,10 +145,10 @@ Node N(rdp rdp_parser){
 }
 
 Node F(rdp rdp_parser){
-    if(matchTerminal(rdp_parser, '(')){
+    if(rdp_matchTerminal(rdp_parser, '(')){
         Node yy =E(rdp_parser);
         if(yy==NULL)return NULL;
-        if(!matchTerminal(rdp_parser, ')'))return NULL;
+        if(!rdp_matchTerminal(rdp_parser, ')'))return NULL;
         Node x=newNode('F');
         Node xx=newNode('(');
         Node xxx=newNode(')');
@@ -192,7 +192,7 @@ Node T(rdp rdp_parser){
 
 Node TT(rdp rdp_parser){
     
-    if (matchTerminal(rdp_parser, '+')){
+    if (rdp_matchTerminal(rdp_parser, '+')){
         Node yy = T(rdp_parser);
         if(yy==NULL)return NULL;
         Node yyy=TT(rdp_parser);
@@ -204,7 +204,7 @@ Node TT(rdp rdp_parser){
         return x;
         
         
-    }else if (matchTerminal(rdp_parser, '-')){
+    }else if (rdp_matchTerminal(rdp_parser, '-')){
         
         Node yy = T(rdp_parser);
         if(yy==NULL)return NULL;
@@ -228,7 +228,7 @@ Node TT(rdp rdp_parser){
 
 Node FT(rdp rdp_parser){
 
-    if (matchTerminal(rdp_parser, '*')){
+    if (rdp_matchTerminal(rdp_parser, '*')){
         Node yy = F(rdp_parser);
         if(yy==NULL)return NULL;
         Node yyy=FT(rdp_parser);
@@ -240,7 +240,7 @@ Node FT(rdp rdp_parser){
         return x;
         
         
-    }else if (matchTerminal(rdp_parser, '/')){
+    }else if (rdp_matchTerminal(rdp_parser, '/')){
         
         Node yy = F(rdp_parser);
         if(yy==NULL)return NULL;
