@@ -21,9 +21,7 @@ extern rdp new_rdp(char * input);
 
 extern int lookahead(rdp this, char c);
 
-extern int lookaheads(rdp this, char* c);
-
-char lookahead2(rdp rdp_parser);
+extern char lookahead2(rdp rdp_parser);
 
 extern int matchTerminal(rdp this, char c);
 

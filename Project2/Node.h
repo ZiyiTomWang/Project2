@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#endif /* Node_h */
+
 
 typedef struct Node *Node;
 struct Node{
@@ -20,10 +20,19 @@ struct Node{
     int childNum;
     Node parent;
     int depth;
+    int nthChild;
 };
+
+void Node_addChildrenByString(Node this, char* children);
 
 extern Node newNode(char c);
 
 extern void Node_addChildren(Node node, Node* children, int numOfChildren);
 
 extern void printTree(Node node);
+
+extern Node findLeftMostNonterminalLeaf(Node node);
+
+extern Node findNextSibling(Node node);
+
+#endif /* Node_h */

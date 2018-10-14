@@ -13,7 +13,8 @@
 TDP new_TDP(char * input){
     TDP this=(TDP)malloc(sizeof(struct TDP));
     this->input=input;
-    //this->root=E(this);
+    this->root=newNode('E');
+    execute(this);
     return this;
 }
 
@@ -21,6 +22,9 @@ int lookahead(TDP tdp_parser,char c){
     return *tdp_parser->input==c;
 }
 
+int lookahead2(TDP tdp){
+    return *tdp->input;
+}
 
 int matchTerminal(TDP this, char c){
     if( *this->input==c){
@@ -61,15 +65,38 @@ int findTerminal(char c){
     }
     return -1;
 }
+
+char* production(int r, int c){
+    int id=table[r][c];
+    if(id==-1){
+        return NULL;
+    }
+    return productionRight[id];
+}
 Node execute(TDP tdp){
     Stack stack=newStack();
     pushChar(stack, 'E');
+    tdp->root=newNode('E');
+    
     while(stack->size!=0){
         char goal=pop(stack);
-        if(findTerminal(goal)!=-1){
-            
+        if(findTerminal(goal)!=-1){//is terminal, match and consume
+            matchTerminal(tdp, goal);
+        }else if(findNonTerminal(goal)!=-1){//is not a terminal
+            char input=lookahead2(tdp);
+            int r=findNonTerminal(goal);
+            int c=findTerminal(input);
+            if(c==-1) c=16;//e
+            char* produc=production(r, c);
+            if(produc==NULL)return NULL;
+            pushString(stack, produc);
+            Node leaf=findLeftMostNonterminalLeaf(tdp->root);
+            Node_addChildrenByString(leaf, produc);
+        }else{
+            return NULL;
         }
     }
+    return tdp->root;
 }
 
 

@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "Node.h"
-#endif /* TDP_h */
+
 
 typedef struct TDP *TDP;
 struct TDP{
@@ -30,3 +30,9 @@ extern Node execute(TDP tdp);
 extern int findTerminal(char c);
 
 extern int findNonTerminal(char c);
+
+extern int lookahead2(TDP tdp);
+
+extern char* production(int r, int c);
+
+#endif /* TDP_h */

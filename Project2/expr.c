@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "RDP.h"
+#include "TDP.h"
 void removeNewLine(char* i);
 void removeNewLine(char* i){
     long length=strlen(i);
@@ -33,6 +34,14 @@ int main(int argc, const char * argv[]) {
         }
         else{
         printTree(RDP1->root);
+        }
+        
+        TDP TDP1=new_TDP(str);
+        if(TDP1->root==NULL){
+            printf("Not a well-formed input\n");
+        }
+        else{
+            printTree(TDP1->root);
         }
     }
 }
