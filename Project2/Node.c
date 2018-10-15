@@ -108,6 +108,7 @@ char beginWith(Node node){
 }
 
 double evaluate(Node node){
+
     switch(node->element){
         
         case 'E':{// T TT
@@ -169,9 +170,37 @@ double evaluate(Node node){
             if(beginWith(NT)=='e'){
                 return evaluate(D);
             }else{
+                int compare=1;double nt=evaluate(NT);
+                while(compare<=nt){
+                    compare*=10;
+                }
+                return compare*evaluate(D)+evaluate(NT);
             }
-            
         }
+        break;
+        case 'n':{// N|e
+            return evaluate(node->children[0]);
+        }
+        break;
+        case 'D':{
+            char x=node->children[0]->element;
+            switch (x) {
+                case '0':return 0;break;
+                case '1':return 1;break;
+                case '2':return 2;break;
+                case '3':return 3;break;
+                case '4':return 4;break;
+                case '5':return 5;break;
+                case '6':return 6;break;
+                case '7':return 7;break;
+                case '8':return 8;break;
+                case '9':return 9;break;
+                default:
+                break;
+            }
+        }
+        default:
+        break;
     }
     return 0;
 }

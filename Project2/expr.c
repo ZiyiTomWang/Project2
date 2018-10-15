@@ -20,14 +20,14 @@ void removeNewLine(char* i){
 int main(int argc, const char * argv[]) {
     while(1){
         char str [256];
-        printf("    Enter an input (\"quit\" to quit): ");
+        printf("----------Enter an input (\"quit\" to quit): ");
         fgets(str,255,stdin);
         removeNewLine(str);
         if(strcmp(str,"quit")==0){
             return 0;
         }
         //input:str
-        printf("\n    RDP...\n");
+        printf("\n-----Recursive-descent parser...\n");
         rdp RDP1 = new_rdp(str);
         if(RDP1->root==NULL){
             printf("Not a well-formed input\n");
@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
 
         printTree(RDP1->root);
         }
-        printf("\n    TDP...\n");
+        printf("\n-----Table-driven parser...\n");
         TDP TDP1=new_TDP(str);
         if(TDP1->root==NULL){
             printf("Not a well-formed input\n");
@@ -44,5 +44,8 @@ int main(int argc, const char * argv[]) {
         else{
             printTree(TDP1->root);
         }
+        printf("\n-----Evaluating the parse tree...\n");
+        if(RDP1->root==NULL) printf("Not a well-formed input\n\n\n");
+        else printf("%f\n\n\n",evaluate(RDP1->root));
     }
 }
