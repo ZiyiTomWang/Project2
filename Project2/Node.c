@@ -100,3 +100,79 @@ Node findLeftMostNonterminalLeaf(Node node){
     }
     return NULL;
 }
+
+char beginWith(Node node){
+    if(node->childNum==0)return 'X';
+    else
+    return node->children[0]->element;
+}
+
+double evaluate(Node node){
+    switch(node->element){
+        
+        case 'E':{// T TT
+            Node T=node->children[0];
+            Node TT=node->children[1];
+            char c=beginWith(TT);
+            switch(c){
+                case '+': return evaluate(T)+evaluate(TT);break;
+                case '-': return evaluate(T)-evaluate(TT);break;
+                default: return evaluate(T);break;
+            }
+        }
+        break;
+        case 't':{//+-T TT
+            Node T=node->children[1];
+            Node TT=node->children[2];
+            char c=beginWith(TT);
+            switch(c){
+                case '+': return evaluate(T)+evaluate(TT);break;
+                case '-': return evaluate(T)-evaluate(TT);break;
+                default: return evaluate(T);break;
+            }
+        }
+        break;
+        case 'T':{//F FT
+            Node F=node->children[0];
+            Node FT=node->children[1];
+            char c=beginWith(FT);
+            switch(c){
+                case '*': return evaluate(F)*evaluate(FT);break;
+                case '/': return evaluate(F)/evaluate(FT);break;
+                default: return evaluate(F);break;
+            }
+        }
+        break;
+        case 'f':{//*/F FT
+            Node F=node->children[1];
+            Node FT=node->children[2];
+            char c=beginWith(FT);
+            switch(c){
+                case '+': return evaluate(F)*evaluate(FT);break;
+                case '-': return evaluate(F)-evaluate(FT);break;
+                default: return evaluate(F);break;
+            }
+        }
+        break;
+        case 'F':{// N | (E)
+            char c=beginWith(node);
+            if(c=='('){
+                return evaluate(node->children[1]);
+            }else{
+                return evaluate(node->children[0]);
+            }
+        }
+        break;
+        case 'N':{// D NT
+            Node D=node->children[0];
+            Node NT=node->children[1];
+            if(beginWith(NT)=='e'){
+                return evaluate(D);
+            }else{
+            }
+            
+        }
+    }
+    return 0;
+}
+

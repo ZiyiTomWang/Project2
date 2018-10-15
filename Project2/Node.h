@@ -35,4 +35,7 @@ extern Node findLeftMostNonterminalLeaf(Node node);
 
 extern Node findNextSibling(Node node);
 
+extern char beginWith(Node node);
+
+extern double evaluate(Node node);
 #endif /* Node_h */
