@@ -9,6 +9,8 @@
 #include "Node.h"
 #include <stdlib.h>
 #include "TDP.h"
+#include "Stack.h"
+
 Node newNode(char c){
     Node this=(Node) malloc(sizeof(struct Node));
     this->element=c;
@@ -108,6 +110,8 @@ char beginWith(Node node){
 }
 
 double evaluate(Node node){
+    
+    Stack calcStack = newStack();
 
     switch(node->element){
         
@@ -116,8 +120,14 @@ double evaluate(Node node){
             Node TT=node->children[1];
             char c=beginWith(TT);
             switch(c){
-                case '+': return evaluate(T)+evaluate(TT);break;
-                case '-': return evaluate(T)-evaluate(TT);break;
+                case '+': pushChar(calcStack, '+');
+                    return evaluate(T)+evaluate(TT);
+                    
+                    break;
+                case '-': pushChar(calcStack, '-');
+                    return evaluate(T)-evaluate(TT);
+                    
+                    break;
                 default: return evaluate(T);break;
             }
         }
@@ -127,8 +137,12 @@ double evaluate(Node node){
             Node TT=node->children[2];
             char c=beginWith(TT);
             switch(c){
-                case '+': return evaluate(T)+evaluate(TT);break;
-                case '-': return evaluate(T)-evaluate(TT);break;
+                case '+':
+                    pushChar(calcStack, '+');
+                    return evaluate(T)+evaluate(TT);break;
+                case '-':
+                    pushChar(calcStack, '-');
+                    return evaluate(T)-evaluate(TT);break;
                 default: return evaluate(T);break;
             }
         }
@@ -138,8 +152,12 @@ double evaluate(Node node){
             Node FT=node->children[1];
             char c=beginWith(FT);
             switch(c){
-                case '*': return evaluate(F)*evaluate(FT);break;
-                case '/': return evaluate(F)/evaluate(FT);break;
+                case '*':
+                    pushChar(calcStack, '*');
+                    return evaluate(F)*evaluate(FT);break;
+                case '/':
+                    pushChar(calcStack, '/');
+                    return evaluate(F)/evaluate(FT);break;
                 default: return evaluate(F);break;
             }
         }
@@ -149,8 +167,12 @@ double evaluate(Node node){
             Node FT=node->children[2];
             char c=beginWith(FT);
             switch(c){
-                case '+': return evaluate(F)*evaluate(FT);break;
-                case '-': return evaluate(F)-evaluate(FT);break;
+                case '*':
+                    pushChar(calcStack, '*');
+                    return evaluate(F)*evaluate(FT);break;
+                case '/':
+                    pushChar(calcStack, '/');
+                    return evaluate(F)/evaluate(FT);break;
                 default: return evaluate(F);break;
             }
         }
@@ -167,12 +189,20 @@ double evaluate(Node node){
         case 'N':{// D NT
             Node D=node->children[0];
             Node NT=node->children[1];
+            
+           
+            
             if(beginWith(NT)=='e'){
                 return evaluate(D);
             }else{
-                int compare=1;double nt=evaluate(NT);
+                int compare=1;
+                double nt=evaluate(NT);
+                // printf("%s%c", "nt:", nt);
                 while(compare<=nt){
+                    
                     compare*=10;
+                    
+                    
                 }
                 return compare*evaluate(D)+evaluate(NT);
             }
@@ -185,16 +215,37 @@ double evaluate(Node node){
         case 'D':{
             char x=node->children[0]->element;
             switch (x) {
-                case '0':return 0;break;
-                case '1':return 1;break;
-                case '2':return 2;break;
-                case '3':return 3;break;
-                case '4':return 4;break;
-                case '5':return 5;break;
-                case '6':return 6;break;
-                case '7':return 7;break;
-                case '8':return 8;break;
-                case '9':return 9;break;
+                case '0':
+                    pushChar(calcStack, '0');
+                    return 0;break;
+                case '1':
+                    pushChar(calcStack, '1');
+                    return 1;break;
+                case '2':
+                    pushChar(calcStack, '2');
+                    return 2;break;
+                case '3':
+                    pushChar(calcStack, '3');
+                    return 3;break;
+                case '4':
+                    pushChar(calcStack, '4');
+                    return 4;break;
+                case '5':
+                    pushChar(calcStack, '5');
+                    return 5;break;
+                case '6':
+                    pushChar(calcStack, '6');
+                    return 6;break;
+                case '7':
+                    pushChar(calcStack, '7');
+                    return 7;break;
+                case '8':
+                    pushChar(calcStack, '8');
+                    return 8;break;
+                case '9':
+                    pushChar(calcStack, '9');
+                    return 9;break;
+                
                 default:
                 break;
             }
@@ -202,6 +253,32 @@ double evaluate(Node node){
         default:
         break;
     }
+    
+    
+    // Stack stack2 = newStack();
+    
+    
+    while (calcStack -> size != 1){
+        
+        char *storeVal =  " ";
+        
+        char k = pop(calcStack);
+        if ( k!= '+' && k != '-' && k != '*' && k != '/'){
+            
+            storeVal += k;
+        } else {
+            // pushChar(stack2, storeVal);
+            
+            // storeVal == NULL;
+        }
+        
+        
+        
+    }
+    
+    
+    
     return 0;
 }
+
 
