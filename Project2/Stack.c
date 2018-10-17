@@ -38,3 +38,8 @@ char pop(Stack stack){
     stack->size--;
     return stack->arr[stack->size];
 }
+
+void stack_Free(Stack this){
+    free(this->arr);
+    free(this);
+}

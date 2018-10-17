@@ -281,4 +281,12 @@ double evaluate(Node node){
     return 0;
 }
 
+void free_Node(Node this){
+    this -> childNum = 0;
+    for(int i=0; i<20;i++){
+        free(this->children[i]);
+    }
+    free(this->children);
+    free(this);
+}
 

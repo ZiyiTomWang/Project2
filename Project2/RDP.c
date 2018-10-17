@@ -260,3 +260,6 @@ Node FT(rdp rdp_parser){
     }
 }
 
+void RDP_free(rdp this){
+    free(this);
+}

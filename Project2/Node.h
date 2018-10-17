@@ -38,4 +38,6 @@ extern Node findNextSibling(Node node);
 extern char beginWith(Node node);
 
 extern double evaluate(Node node);
+
+extern void free_Node(Node this);
 #endif /* Node_h */

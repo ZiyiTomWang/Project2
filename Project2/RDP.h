@@ -43,5 +43,6 @@ extern Node F(rdp rdp_parser);
 
 extern Node FT(rdp rdp_parser);
 
+extern void RDP_free(rdp this);
 
 #endif /* rdp_h */

@@ -106,4 +106,7 @@ Node execute(TDP tdp){
     return tdp->root;
 }
 
+void free_TDP(TDP this){
+    free(this);
+}
 

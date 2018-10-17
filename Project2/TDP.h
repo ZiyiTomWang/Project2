@@ -35,4 +35,5 @@ extern int tdp_lookahead2(TDP tdp);
 
 extern char* production(int r, int c);
 
+extern void free_TDP(TDP this);
 #endif /* TDP_h */

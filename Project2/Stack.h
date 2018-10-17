@@ -26,4 +26,5 @@ extern void pushString(Stack stack, char* s);
 
 extern char pop(Stack stack);
 
+extern void stack_Free(Stack this);
 #endif /* Stack_h */
